@@ -15,9 +15,9 @@ $showFormular = true; //Variable ob das Registrierungsformular anezeigt werden s
 
 if(isset($_GET['register'])) {
     $error = false;
-    $email = $_POST['email'];
-    $passwort = $_POST['passwort'];
-    $passwort2 = $_POST['passwort2'];
+    $email = htmlspecialchars($_POST['email']);
+    $passwort = htmlspecialchars($_POST['passwort']);
+    $passwort2 = htmlspecialchars($_POST['passwort2']);
 
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo 'Bitte eine gültige E-Mail-Adresse eingeben<br>';

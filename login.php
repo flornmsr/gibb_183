@@ -3,8 +3,8 @@ session_start();
 $db = new PDO('mysql:host=localhost;dbname=gibb_183', 'root', '');
 
 if (isset($_GET['login'])) {
-    $email = $_POST['email'];
-    $passwort = $_POST['passwort'];
+    $email = htmlspecialchars($_POST['email']);
+    $passwort = htmlspecialchars($_POST['passwort']);
 
     $statement = $db->prepare("SELECT * FROM users WHERE email = :email");
     $result = $statement->execute(array('email' => $email));
